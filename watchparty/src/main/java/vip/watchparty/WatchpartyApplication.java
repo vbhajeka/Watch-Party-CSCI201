@@ -1,4 +1,4 @@
-package vip.watchparty.watchparty;
+package vip.watchparty;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
