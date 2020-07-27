@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>JDBC</title>
+
+
+</head>
+<body>
+<h1>Entries from the database</h1>
+<div class="container">
+    <p th:text="${message}" />
+    <div th:each="book: ${books}">
+        <p th:text="${book}" />
+    </div>
+</div>
+
+<script>
+    let books = [[${books}]];
+    let body = document.querySelector(".container");
+    for (i = 0; i < books.length; i++)
+    {
+        let x = document.createElement("P");
+        console.log(books[i]);
+    }
+</script>
+
+
+</body>
+</html>

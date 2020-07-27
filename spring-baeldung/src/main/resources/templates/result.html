@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+</head>
+<body>
+<h1>Thanks for submitting</h1>
+<p th:text="${message}" />
+</body>
+
+<script>
+    var id = [[${id}]];
+    var message = "[[${message}]]";
+
+    console.log(id, message);
+
+</script>
+
+
+</body>
+</html>
