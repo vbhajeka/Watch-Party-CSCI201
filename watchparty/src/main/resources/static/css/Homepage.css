@@ -4,6 +4,7 @@
 	box-sizing:border-box;
 }
 
+
 html,body{
 	height:100%;
 
@@ -91,7 +92,7 @@ body{
 #room-list{
 	grid-area:room-list;
 	overflow-y:scroll;
-
+	
 }
 
 
@@ -286,12 +287,12 @@ body{
 .your-message{
 	justify-content:end;
 	justify-items:end;
-
+	
 }
 
 .other-message{
 	justify-items:start;
-
+	
 }
 
 .message-text{

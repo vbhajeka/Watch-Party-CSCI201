@@ -1,5 +1,7 @@
 package vip.watchparty.persistence.models;
 
+
+//Model for STOMP messages sent over websocket
 public class ChatMessage {
 
     private MessageType type;

@@ -1,4 +1,4 @@
-package vip.watchparty.controllers;
+package vip.watchparty.controllers.websockets;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,25 +27,7 @@ public class WebSocketEventListener {
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
 
-        StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-
-        //Grab the username from the session
-        String username = (String) headerAccessor.getSessionAttributes().get("username");
-        if(username != null) {
-            logger.info("User disconnected: " + username);
-
-            //Create the user left message
-            ChatMessage chatMessage = new ChatMessage();
-            chatMessage.setType(ChatMessage.MessageType.LEAVE);
-            chatMessage.setSender(username);
-
-            //broadcast it to the topic
-            messageTemplate.convertAndSend("/topic/public", chatMessage);
-
-        }
-
-
-
+        logger.info("User disconnected");
     }
 
 }
