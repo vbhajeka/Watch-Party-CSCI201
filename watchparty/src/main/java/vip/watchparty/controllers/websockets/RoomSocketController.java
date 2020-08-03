@@ -38,6 +38,8 @@ public class RoomSocketController {
 
         String destination = "/syncplayer/" + roomId;
 
+        logger.info("Received event of type " + playerEvent.getEventType());
+
         //Publish player event to specified roomId
         messagingTemplate.convertAndSend(destination, playerEvent);
     }

@@ -36,6 +36,10 @@ function on_sync_event(payload) {
     console.log(syncEvent);
 }
 
+function on_message(payload) {
+
+}
+
 function onMessageReceived(payload) {
     var message = JSON.parse(payload.body);
 
