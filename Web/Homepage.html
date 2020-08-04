@@ -1,9 +1,10 @@
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 <title>Homepage Design</title>
 <link rel="stylesheet" type="text/css" media="screen" href="Homepage.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
+<!--	<meta http-equiv="refresh" content="5">-->
 
 <!-- SOCK JS include -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.4.0/sockjs.js"></script>
@@ -13,12 +14,31 @@
 
 <!-- Websockets -->
 <script type="text/javascript" src="websockets/room-sockets.js"></script>
+	<script>
+		function loadUrl(){
+			var leaveRoom = document.querySelector("#leaveRoom");
+			leaveRoom.href = "https://www.google.com";
+			var logout = document.querySelector("#logout");
+			logout.href = "http://localhost:63342/watchparty/templates/Login.html?_ijt=ocbtbdjkoolgb93le2ne1p6aar";
+		}
 
+		function change()
+		{
+			if(document.getElementById("room-list").style.visibility=="visible")
+			{
+				document.getElementById("room-list").style.visibility="hidden";
+			}
+			else
+			{
+				document.getElementById("room-list").style.visibility="visible";
+			}
+		}
+	</script>
 <!-- Event handlers -->
 </head>
-<body>
+<body onload="loadUrl()">
 	<div id="general-container">
-		<div id="top-left-container">
+		<div id="top-left-container" onclick="change();">
 			<p id="leftheader">Room</p>
 		</div>
 		<div id="room-list">
@@ -76,22 +96,26 @@
 					</div>
 				</div>
 			</div>
-			<div class="bigbutton-container">
-				<button class="bigbutton" type="button" onclick="showPopupJoin()">Join Room</button>
-				<div id="pop-up-box-container-join"> </div>
-				<div id="pop-up-box-join">
-					<div id="pop-up-header-join"> Please Enter your Password</div>
-					<div id="pop-up-body-join">
-						<input type="Password" name="" placeholder="">
-					</div>
-					<div id="pop-up-footer-join">
-						<button onclick="popupOkJoin()">OK</button>
-						<button onclick="popupCancelJoin()">Cancel</button>
-					</div>
-				</div>
+			<div class="container-cust">
+				<input class = "width-50" type = "text" PLACEHOLDER="room url" name = "joinRoom">
+				<button class = " bigbutton width-30" type = "button" name="joinRoom"/> Join </button>
 			</div>
+<!--			<div class="bigbutton-container">-->
+
+<!--				<div id="pop-up-box-container-join"> </div>-->
+<!--				<div id="pop-up-box-join">-->
+<!--					<div id="pop-up-header-join"> Please Enter your Password</div>-->
+<!--					<div id="pop-up-body-join">-->
+<!--						<input type="Password" name="" placeholder="">-->
+<!--					</div>-->
+<!--					<div id="pop-up-footer-join">-->
+<!--						<button onclick="popupOkJoin()">OK</button>-->
+<!--						<button onclick="popupCancelJoin()">Cancel</button>-->
+<!--					</div>-->
+<!--				</div>-->
+<!--			</div>-->
 			<div class="bigbutton-container">
-				<button class="bigbutton" type="button" onclick="showPopupLeave()">Leave Room</button>
+				<a id = "leaveRoom" href=""><button class="bigbutton" type="button" onclick="showPopupLeave()">Leave Room</button></a>
 				<div id="pop-up-box-container-leave"> </div>
 				<div id="pop-up-box-leave">
 					<div id="pop-up-header-leave"> Leave Room?</div>
@@ -105,7 +129,8 @@
 		</div>
 
 		<div id="bottom-left-container">
-			<button class="bigbutton" type="button" onclick="showPopupLogout()">Log out</button>
+			<a id = "logout" href="">
+			<button class="bigbutton" type="button" onclick="showPopupLogout()">Log out</button></a>
 			<div id="pop-up-box-container-logout"> </div>
 			<div id="pop-up-box-logout">
 				<div id="pop-up-header-logout"> Log out?</div>
@@ -178,6 +203,7 @@
 		</div>
 	</div>
 <body>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
