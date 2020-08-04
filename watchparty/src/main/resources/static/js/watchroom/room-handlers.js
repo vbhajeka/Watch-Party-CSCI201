@@ -17,4 +17,6 @@ function sync() {
         {},
         JSON.stringify(data)
     );
+
+    console.log('Sync bitches');
 }

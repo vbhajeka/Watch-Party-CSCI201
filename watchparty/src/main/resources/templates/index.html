@@ -15,6 +15,10 @@
 	<!-- STOMP JS include -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
+	<!--Make the player available for STOMP message handlers-->
+	<script>
+		let player;
+	</script>
 	<!-- Websockets -->
 	<script type="text/javascript" src="js/watchroom/room-sockets.js"></script>
 
@@ -28,7 +32,7 @@
 <body>
 <div id="general-container">
 	<div id="top-left-container">
-		<p id="leftheader">Fuck</p>
+		<p id="leftheader">Room</p>
 	</div>
 	<div id="room-list">
 		<div class="seperation">
@@ -130,9 +134,21 @@
 		<span>Video</span>
 	</div>
 	<div id="video-container">
-		<div id="player">
+		<div id="player"></div>
 
+		<div id="progressBar">
+			<div id="line"></div>
+			<div id="scrubber"></div>
 		</div>
+
+
+		<div id='player-controls'>
+			<button type="button" class="btn btn-success" id="playButton">Play</button>
+			<button type="button" class="btn btn-danger" id="pauseButton">Pause</button>
+		</div>
+
+
+
 		<button type="button" class="btn btn-primary" id='testing-button'>Primary</button>
 
 

@@ -33,7 +33,18 @@ function error_callback() {
 //Respond to the player sync event
 function on_sync_event(payload) {
     let syncEvent = JSON.parse(payload.body);
-    console.log(syncEvent);
+
+    if(syncEvent.eventType === "PAUSE") {
+        console.log("Received pause");
+        player.pauseVideo();
+    }
+    else if(syncEvent.eventType === "PLAY") {
+        console.log("Received play");
+        player.playVideo();
+    }
+    else {
+        console.log("Received scrub");
+    }
 }
 
 function on_message(payload) {

@@ -21,6 +21,39 @@ body{
 	place-items:center;
 }
 
+/*Alex additions*/
+#player {
+	margin-top: 50px;
+}
+
+/*#player-controls {*/
+/*	float: left;*/
+/*}*/
+
+#progressBar {
+	margin: 7px;
+	margin-top:20px;
+	width: 800px;
+	height: 35px;
+
+}
+
+#line {
+	border-style: solid;
+	top: 50%;
+	position: relative;
+	border-width: 1px;
+}
+
+
+#scrubber {
+	width: 15px;
+	height: 15px;
+	position: relative;
+	background-color: black;
+	top: 8.5px;
+}
+
 #general-container{
 	display:grid;
 	grid:
