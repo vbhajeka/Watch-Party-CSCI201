@@ -1,0 +1,26 @@
+#video-chat-list{
+	grid:room-list;
+	border:1px;
+	background:#ddd;
+	overflow-y:scroll;
+}
+
+.video-chat-participant{
+	grid-gap:10px;
+	color:#ddd;
+	font-size:1.3rem;
+	border-left:1px solid #8B0000;
+	border-right:1px solid #8B0000;
+	border-bottom:1px solid #8B0000;
+	padding:20px 20px 20px 15px;
+}
+
+.video-chat-participant.active,
+.video-chat-participant:hover{
+	background:#eee;
+}
+
+.video-chat-participant>img{
+	grid-row:span 2;
+	align-items:center;
+}
