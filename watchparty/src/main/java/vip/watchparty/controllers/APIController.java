@@ -2,11 +2,12 @@ package vip.watchparty.controllers;
 
 
 import java.io.IOException;
+import java.net.http.HttpClient;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 
@@ -41,7 +42,7 @@ public class APIController {
 		// HTTP Get code borrowed from Stack Overflow
 		// https://stackoverflow.com/questions/27200634/authorization-header-in-http-request-in-linkedin/27200786
 		try {
-			HttpClient httpClient = HttpClientBuilder.create().build();
+			CloseableHttpClient httpClient = HttpClientBuilder.create().build();
 
 			HttpGet httpGet = new HttpGet(httpLink);
 
