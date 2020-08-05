@@ -15,10 +15,15 @@
     <!-- STOMP JS include -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
 
-    <!--Make the player available for STOMP message handlers-->
-    <script>
-        let player;
-    </script>
+    <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script defer src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!--Firestore Include-->
+    <script defer src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+
+    <!--Make certain util vars/funcs avaialable to all files-->
+    <script type="text/javascript" src="/js/watchroom/global-needs.js"></script>
+
     <!-- Websockets -->
     <script type="text/javascript" src="/js/watchroom/room-sockets.js"></script>
 
@@ -28,10 +33,34 @@
     <!-- Youtube API Handlers-->
     <script src="/js/watchroom/syncplayer.js"></script>
 
+    <!--James Script addition-->
+    <script>
+        function loadUrl(){
+            var leaveRoom = document.querySelector("#leaveRoom");
+            leaveRoom.href = "https://www.google.com";
+            var logout = document.querySelector("#logout");
+            logout.href = "http://localhost:63342/watchparty/templates/Login.html?_ijt=ocbtbdjkoolgb93le2ne1p6aar";
+        }
+
+        function change()
+        {
+            if(document.getElementById("room-list").style.visibility=="visible")
+            {
+                document.getElementById("room-list").style.visibility="hidden";
+            }
+            else
+            {
+                document.getElementById("room-list").style.visibility="visible";
+            }
+        }
+    </script>
+
+
+
 </head>
 <body>
 <div id="general-container">
-    <div id="top-left-container">
+    <div id="top-left-container" onclick="change();">
         <p id="leftheader">Room</p>
     </div>
     <div id="room-list">
@@ -89,22 +118,12 @@
                 </div>
             </div>
         </div>
-        <div class="bigbutton-container">
-            <button class="bigbutton" type="button" onclick="showPopupJoin()">Join Room</button>
-            <div id="pop-up-box-container-join"> </div>
-            <div id="pop-up-box-join">
-                <div id="pop-up-header-join"> Please Enter your Password</div>
-                <div id="pop-up-body-join">
-                    <input type="Password" name="" placeholder="">
-                </div>
-                <div id="pop-up-footer-join">
-                    <button onclick="popupOkJoin()">OK</button>
-                    <button onclick="popupCancelJoin()">Cancel</button>
-                </div>
-            </div>
+        <div class="container-cust">
+            <input class = "width-50" type = "text" PLACEHOLDER="room url" name = "joinRoom">
+            <button class = " bigbutton width-30" type = "button" name="joinRoom"/> Join </button>
         </div>
         <div class="bigbutton-container">
-            <button class="bigbutton" type="button" onclick="showPopupLeave()">Leave Room</button>
+            <a id = "leaveRoom" href=""><button class="bigbutton" type="button" onclick="showPopupLeave()">Leave Room</button></a>
             <div id="pop-up-box-container-leave"> </div>
             <div id="pop-up-box-leave">
                 <div id="pop-up-header-leave"> Leave Room?</div>
@@ -118,7 +137,8 @@
     </div>
 
     <div id="bottom-left-container">
-        <button class="bigbutton" type="button" onclick="showPopupLogout()">Log out</button>
+        <a id = "logout" href="">
+            <button class="bigbutton" type="button" onclick="showPopupLogout()">Log out</button></a>
         <div id="pop-up-box-container-logout"> </div>
         <div id="pop-up-box-logout">
             <div id="pop-up-header-logout"> Log out?</div>
@@ -146,12 +166,6 @@
             <button type="button" class="btn btn-success" id="playButton">Play</button>
             <button type="button" class="btn btn-danger" id="pauseButton">Pause</button>
         </div>
-
-
-
-        <button type="button" class="btn btn-primary" id='testing-button'>Primary</button>
-
-
 
 
 

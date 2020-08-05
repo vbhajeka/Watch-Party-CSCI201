@@ -20,9 +20,11 @@ function main() {
 
 //Make subscriptions to sync player and chat topics for the specific room
 function connect_callback() {
-    console.log("Subscribed")
-    stompClient.subscribe('/syncplayer/2520', on_sync_event);
-    stompClient.subscribe('/chat/2520', on_message);
+
+
+    console.log(`/syncplayer/${get_room_id()}`)
+    stompClient.subscribe(`/syncplayer/${get_room_id()}`, on_sync_event);
+    stompClient.subscribe(`/chat/${get_room_id()}`, on_message);
 }
 
 
@@ -101,3 +103,4 @@ function sendMessage(event) {
     }
     event.preventDefault();
 }
+
