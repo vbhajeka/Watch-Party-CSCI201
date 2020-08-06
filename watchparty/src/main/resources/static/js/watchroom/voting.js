@@ -10,7 +10,10 @@ function main() {
         .addEventListener("click", async function () {
 
             let userSearch = document.querySelector("#yt-searchbar").value;
+            
+            showPopupSearch();
 
+            document.getElementById("pop-up-body-search").innerHTML = "Searching for videos...";
 
             let response = await fetch(`http://localhost:8081/api/youtubeSearch?query=${userSearch}`);
 
@@ -19,6 +22,8 @@ function main() {
             let videos = json.videos;
             
             console.log(json);
+            
+            document.getElementById("pop-up-body-search").innerHTML = "";
             
             //Loop thru each video in the response
             for(let i=0; i < videos.length; i++) {
@@ -48,9 +53,6 @@ function main() {
                 
             }
 
-
-
-            showPopupSearch();
         });
 }
 
