@@ -22,7 +22,10 @@ function voting() {
             
             //Loop thru each video in the response
             for(let i=0; i < videos.length; i++) {
+            	
             	let video = videos[i];
+            	
+            	let videoStr = JSON.stringify(video);
             
                 let videoTitle = video.videoTitle;
                 let thumbnail = video.thumbnail;
@@ -40,7 +43,7 @@ function voting() {
 	                    	<p class="yt-title">${videoTitle}</p>
 	                    </div>
 	                    <div>
-	                    	<button type="button" class="btn-lg btn-success" id="voteButton" onClick="add_to_queue(${video})" >Add</button>
+	                    	<button type="button" class="btn-lg btn-success" id="voteButton" onClick='add_to_queue(${videoStr})' >Add</button>
 	                	</div>
 	                </div>`;
                 
@@ -54,13 +57,15 @@ function voting() {
 //Allows user to add a video up next
 async function add_to_queue(video) {
 
-    console.log(video);
+	console.log(video);
     //Maps to POJO on backend
     let videoJSON = {
         id: video.videoID,
         thumbnailUrl: video.thumbnail,
         title: video.videoTitle
     };
+    
+    console.log(videoJSON);
 
     //POST to the server
     let response = await fetch(

@@ -5,13 +5,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+    @Override
+    public void configure(HttpSecurity http) throws Exception {
 
-	@Override
-	public void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.antMatcher("/**").authorizeRequests()
-			.antMatchers("/login").permitAll()
-			.anyRequest().authenticated()
-			.and()
-			.oauth2Login();
-	}
+        http
+                .antMatcher("/**").authorizeRequests()
+                .antMatchers(new String[]{"/", "/login"}).permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .oauth2Login();
+    }
 }
