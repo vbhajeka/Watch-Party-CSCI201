@@ -1,11 +1,7 @@
 
-main()
+voting()
 
-async function main() {
-
-}
-
-function main() {
+function voting() {
     document.querySelector("#yt-search-btn")
         .addEventListener("click", async function () {
 
