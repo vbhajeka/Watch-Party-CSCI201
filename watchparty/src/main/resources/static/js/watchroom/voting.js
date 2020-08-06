@@ -27,8 +27,10 @@ function voting() {
                 let videoTitle = video.videoTitle;
                 let thumbnail = video.thumbnail;
 
+
+                let elementId = "addButton" + i;
                 //Append to popup
-                let html = 
+                let htmlElement =
 	                `<div class="youtube-result-container">
 	                    <div>
 		                    <img
@@ -40,27 +42,33 @@ function voting() {
 	                    	<p class="yt-title">${videoTitle}</p>
 	                    </div>
 	                    <div>
-	                    	<button type="button" class="btn-lg btn-success" id="voteButton" onClick="add_to_queue(${video})" >Add</button>
+	                    	<button type="button" class="btn-lg btn-success voteButton" id=addButton">Add</button>
 	                	</div>
 	                </div>`;
-                
-                document.getElementById("pop-up-body-search").innerHTML += html;
-                
+
+
+                document.getElementById("pop-up-body-search").innerHTML += htmlElement;
             }
-            
+
+            let buttons = document.querySelectorAll("#addButton");
+            console.log(buttons);
+
         });
 }
 
 //Allows user to add a video up next
-async function add_to_queue(video) {
+async function add_to_queue(video, thumb) {
 
-    console.log(video);
+    console.log("adding to queue");
+    console.log(video, thumb);
     //Maps to POJO on backend
     let videoJSON = {
-        id: video.videoID,
-        thumbnailUrl: video.thumbnail,
-        title: video.videoTitle
+        id: videoId,
+        thumbnailUrl:thumbnail,
+        title: title
     };
+
+    console.log(videoJSON);
 
     //POST to the server
     let response = await fetch(
