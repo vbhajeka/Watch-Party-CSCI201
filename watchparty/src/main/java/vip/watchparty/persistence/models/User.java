@@ -2,13 +2,14 @@ package vip.watchparty.persistence.models;
 
 //User model pushed from the front end (from session object)
 public class User {
-    private String name;
 
-    public String getName() {
-        return name;
+    private String username;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUsername(String name) {
+        this.username = name;
     }
 }

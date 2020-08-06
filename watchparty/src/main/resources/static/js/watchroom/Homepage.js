@@ -126,7 +126,14 @@ function showPopupSearch(){
 }
 
 function popupCancelSearch(){
+
 	popupHideSearch();
+
+	//Clear youtube video results
+	let youtubeVids = document.querySelectorAll(".youtube-result-container");
+	for (let video of youtubeVids) {
+		video.remove();
+	}
 }
 
 function popupHideSearch(){
