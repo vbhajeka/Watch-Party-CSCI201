@@ -27,11 +27,11 @@
     <!-- Websockets -->
     <script type="text/javascript" src="/js/watchroom/room-sockets.js"></script>
 
-    <!-- Event handlers -->
-    <script src="/js/watchroom/room-handlers.js"></script>
-
     <!-- Youtube API Handlers-->
     <script src="/js/watchroom/syncplayer.js"></script>
+
+    <!--Henry's Original Javascript-->
+    <script src="/js/watchroom/Homepage.js"></script>
 
     <!--James Script addition-->
     <script>
@@ -54,6 +54,7 @@
             }
         }
     </script>
+
 
 
 
@@ -172,26 +173,46 @@
     </div>
     <div id="vote-container">
         <div id="vote">
-            <input type="text" placeholder="Search video by keywords">
+            <input type="text" placeholder="Search video by keywords" id="yt-searchbar">
         </div>
-        <button class="searchbutton" type="button" onclick="showPopupSearch()">Search</button>
+        <button class="searchbutton" type="button" id="yt-search-btn">Search</button>
         <div id="pop-up-box-container-search"> </div>
         <div id="pop-up-box-search">
             <div id="pop-up-header-search">Please Submit your Recommendation</div>
-            <div id="pop-up-body-search">
-                <form action="" method="get" id="video-list">
-                    <div class="video-item"> Daily coronavirus deaths hit staggering milestone fdsfasdfjak sfdfasdfasdfasdfsdfsafsdafsdfsdfsdafdsafdsfa fsdfasdjklfjewlfwejfw;fa safsdjfklsdafsf efjsakflsaf;sd sdfjskdlf;asfsa jdafsdflasdfa
-                        <input type="submit" name="" value="Add">
-                    </div>
-                    <div class="video-item"> Daily coronavirus deaths hit staggering milestone fdsfasdfjak sfdfasdfasdfasdfsdfsafsdafsdfsdfsdafdsafdsfa fsdfasdjklfjewlfwejfw;fa safsdjfklsdafsf efjsakflsaf;sd sdfjskdlf;asfsa jdafsdflasdfa
-                        <input type="submit" name="" value="Add">
-                    </div>
-                    <div class="video-item"> Daily coronavirus deaths hit staggering milestone fdsfasdfjak sfdfasdfasdfasdfsdfsafsdafsdfsdfsdafdsafdsfa fsdfasdjklfjewlfwejfw;fa safsdjfklsdafsf efjsakflsaf;sd sdfjskdlf;asfsa jdafsdflasdfa
-                        <input type="submit" name="" value="Add">
-                    </div>
 
-                </form>
+
+            <div id="pop-up-body-search">
+
+                <div class="youtube-result-container">
+                    <img
+                            class ="yt-thumbnail"
+                            src="https://static.politico.com/dims4/default/e47f863/2147483647/resize/1160x%3E/quality/90/?url=https%3A%2F%2Fstatic.politico.com%2Fbe%2Ffd%2Ffa12678b4813a0ba11122c146100%2Fgettyimages-1222600015.jpg" alt="">
+                   <p class="yt-title">Title Here</p>
+                    <button type="button" class="btn-lg btn-success" id="voteButton">Vote
+                    </button>
+                </div>
+                <div class="youtube-result-container">
+                    <img
+                            class ="yt-thumbnail"
+                            src="https://static.politico.com/dims4/default/e47f863/2147483647/resize/1160x%3E/quality/90/?url=https%3A%2F%2Fstatic.politico.com%2Fbe%2Ffd%2Ffa12678b4813a0ba11122c146100%2Fgettyimages-1222600015.jpg" alt="">
+                    <p class="yt-title">Title Here</p>
+                    <button type="button" class="btn-lg btn-success" id="voteButton">Vote
+                    </button>
+                </div>
+                <div class="youtube-result-container">
+                    <img
+                            class ="yt-thumbnail"
+                            src="https://static.politico.com/dims4/default/e47f863/2147483647/resize/1160x%3E/quality/90/?url=https%3A%2F%2Fstatic.politico.com%2Fbe%2Ffd%2Ffa12678b4813a0ba11122c146100%2Fgettyimages-1222600015.jpg" alt="">
+                    <p class="yt-title">Title Here</p>
+                    <button type="button" class="btn-lg btn-success" id="voteButton">Vote
+                    </button>
+                </div>
+             
+
+
             </div>
+
+
             <div id="pop-up-footer-search">
                 <button onclick="popupCancelSearch()">Cancel</button>
             </div>
@@ -227,4 +248,8 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+<!--Script for Searching & Voting Functionality-->
+<script src="/js/watchroom/voting.js"></script>
+
 </html>

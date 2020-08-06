@@ -1,10 +1,10 @@
 "use strict";
 //Execute upon page load
-document.addEventListener('DOMContentLoaded', main);
+document.addEventListener('DOMContentLoaded', syncplayer);
 
 //Player object is declared globally
 
-function main() {
+function syncplayer() {
 
     setup_firebase();
 
@@ -101,6 +101,21 @@ function run_progress_bar() {
 
         //Seek to the selected fraction of the video
         let videoSecond = videoFraction * player.getDuration();
+
+        //Send out a STOMP scrub message
+
+        //Create the event
+        let data = {
+            'eventType': 'SCRUB',
+            'timeStamp': videoSecond
+        }
+
+        //Send to the message endpoint
+        stompClient.send(`/app/room/${get_room_id()}/syncevent`,
+            {},
+            JSON.stringify(data)
+        );
+
         player.seekTo(videoSecond);
 
 
@@ -140,7 +155,7 @@ function onYouTubeIframeAPIReady() {
         height: '600',
         width: '900',
         videoId: 'M7lc1UVf-VE',
-        playerVars: {'controls': 1},
+        playerVars: {'controls': 0},
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange

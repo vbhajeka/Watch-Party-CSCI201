@@ -54,6 +54,34 @@ body{
 	top: 8.5px;
 }
 
+/*End Alex Addition*/
+
+/*
+Voting Pop Up CSS
+*/
+
+.yt-thumbnail {
+	height: 100px;
+	width: 150px;
+	position: relative;
+}
+
+#voteButton {
+	position: relative;
+	left: 400px;
+	bottom: 100px;
+	padding: 10px 20px;
+	font-size: 20px;
+	border-radius: 10px;
+}
+
+.yt-title {
+	position: relative;
+	bottom: 50px;
+	left: 200;
+}
+
+
 #general-container{
 	display:grid;
 	grid:

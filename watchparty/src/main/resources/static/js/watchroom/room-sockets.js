@@ -46,6 +46,7 @@ function on_sync_event(payload) {
     }
     else {
         console.log("Received scrub");
+        player.seekTo(syncEvent.timeStamp);
     }
 }
 
