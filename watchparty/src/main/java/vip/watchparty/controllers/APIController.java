@@ -27,6 +27,7 @@ public class APIController {
     @GetMapping("/api/youtubeSearch")
     @ResponseBody
 	public String youtubeSearch(@RequestParam String query) {
+    	query = query.replace(' ', '+');
     	return search(query);
 	}
 
