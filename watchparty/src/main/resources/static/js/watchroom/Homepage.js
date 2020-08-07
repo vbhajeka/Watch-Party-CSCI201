@@ -136,17 +136,34 @@ function popupCancelSearch(){
 	}
 }
 
-function popupCancelVote(){
-
-	popupHideVote();
-}
-
 function popupHideSearch(){
 	var popc=document.getElementById("pop-up-box-container-search");
 	var pop=document.getElementById("pop-up-box-search");
 	popc.style.display="none";
 	pop.style.display="none";
 }
+
+
+//-----Vote Pop Up----------
+//----------------------------
+
+function popupCancelVote(){
+	popupHideVote();
+}
+
+function showPopupVote(){
+	// var popc=document.getElementById("pop-up-box-container-search");
+	var pop=document.getElementById("pop-up-box-vote");
+	// popc.style.display="block";
+	pop.style.display="block";
+
+	var winWidth=window.innerWidth;
+
+	pop.style.left=(winWidth/2)-250+"px";
+	pop.style.top="150px";
+}
+
+
 
 function popupHideVote(){
 	var popc=document.getElementById("pop-up-box-container-vote");

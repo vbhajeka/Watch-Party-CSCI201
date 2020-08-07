@@ -226,7 +226,7 @@ function onPlayerStateChange(event) {
 
 //Triggers on video end to allow vote for up next
 function trigger_vote() {
-
+    showPopupVote();
 }
 
 
