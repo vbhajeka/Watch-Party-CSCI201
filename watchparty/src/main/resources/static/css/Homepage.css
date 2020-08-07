@@ -454,6 +454,7 @@ Voting Pop Up CSS
 	z-index:9999;
 }
 
+
 #pop-up-box-create,#pop-up-box-join,#pop-up-box-leave,#pop-up-box-logout{
 	display:none;
 	position:fixed;
@@ -472,9 +473,18 @@ Voting Pop Up CSS
 	background-color:#eee;
 }
 
+#pop-up-box-vote{
+	display:none;
+	position:fixed;
+	width:500px;
+	z-index:9999;
+	border-radius:10px;
+	background-color:#eee;
+}
+
 
 #pop-up-header-create,#pop-up-header-join,#pop-up-header-leave,
-#pop-up-header-logout,#pop-up-header-search{
+#pop-up-header-logout,#pop-up-header-search, #pop-up-header-vote{
 	font-weight:bold;
 	background-color:#9D2235;
 	color:#FFC72C;
@@ -484,7 +494,7 @@ Voting Pop Up CSS
 }
 
 #pop-up-body-create,#pop-up-body-join,#pop-up-body-leave,
-#pop-up-body-logout,#pop-up-body-search{
+#pop-up-body-logout,#pop-up-body-search, #pop-up-body-vote{
 	font-size:14px;
 	padding:10px;
 	background-color:#eee;
@@ -499,7 +509,7 @@ Voting Pop Up CSS
 	font-size:18px;
 }
 
-#pop-up-body-search{
+#pop-up-body-search, #pop-up-body-vote{
 	height:350px;
 	overflow-y:scroll;
 }
@@ -536,7 +546,7 @@ Voting Pop Up CSS
 
 
 #pop-up-footer-create,#pop-up-footer-join,#pop-up-footer-leave,
-#pop-up-footer-logout,#pop-up-footer-search{
+#pop-up-footer-logout,#pop-up-footer-search, #pop-up-footer-vote{
 	background-color:#FFC72C;
 	text-align:right;
 	padding:10px;
@@ -544,7 +554,7 @@ Voting Pop Up CSS
 }
 
 #pop-up-footer-create button,#pop-up-footer-join button,#pop-up-footer-leave button,
-#pop-up-footer-logout button,#pop-up-footer-search button{
+#pop-up-footer-logout button,#pop-up-footer-search button,#pop-up-footer-vote button{
 	background-color:#9D2235;
 	color:#FFC72C;
 	padding:5px;

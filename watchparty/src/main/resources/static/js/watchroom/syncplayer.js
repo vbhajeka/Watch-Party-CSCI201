@@ -62,9 +62,6 @@ function syncplayer() {
 
     });
 
-    emit_sync_time();
-
-
 }
 
 //Gives current time of video every 100 milliseconds
@@ -214,10 +211,24 @@ function onPlayerStateChange(event) {
             JSON.stringify(data)
         );
     }
+    else if(event.data === 0) {
+        //On video end trigger voting
+        trigger_vote();
+    }
     else {
         console.log(event.data);
     }
 }
+
+
+///Voting
+///--------------------------
+
+//Triggers on video end to allow vote for up next
+function trigger_vote() {
+
+}
+
 
 
 //-----Firestore Functions---------

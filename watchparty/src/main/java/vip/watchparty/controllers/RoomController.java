@@ -63,11 +63,45 @@ public class RoomController {
      */
     @PostMapping("/room/{roomId}")
     @ResponseBody
-    public String add_to_queue(@RequestBody Video toAdd) {
+    public String add_to_queue(@PathVariable String roomId, @RequestBody Video toAdd) {
 
-        logger.info(toAdd.getId());
+        //Look up room
+        Room targetRoom = null;
+        try {
+            //Look up the corresponding room
+            targetRoom = allRooms.get(UUID.fromString(roomId));
+        } catch (Exception e) {
+            return "Failed to find room with id" + roomId;
+        }
 
-        return "Added a video to the queue";
+
+        //Attempt to add the video
+        try {
+            targetRoom.addToQueue(toAdd);
+        } catch(Exception e) {
+            e.printStackTrace();
+            return "Failed to add the video to the queue";
+        }
+
+        //Success message
+        return "Added a video with videoID " + toAdd.getId()+ " to the queue";
+    }
+
+    @GetMapping("/room/{roomId}/getroomqueue")
+    @ResponseBody
+    public List<Video> get_room_queue(@PathVariable String roomId) {
+
+        //Look up the corresponding room
+        Room targetRoom = null;
+        try {
+            targetRoom = allRooms.get(UUID.fromString(roomId));
+        } catch (Exception e) {
+            return null;
+        }
+
+
+        //Return the queue
+        return targetRoom.getVideoQueue();
     }
 
 

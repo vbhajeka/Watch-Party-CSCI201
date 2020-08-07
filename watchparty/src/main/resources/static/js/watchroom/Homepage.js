@@ -136,9 +136,21 @@ function popupCancelSearch(){
 	}
 }
 
+function popupCancelVote(){
+
+	popupHideVote();
+}
+
 function popupHideSearch(){
 	var popc=document.getElementById("pop-up-box-container-search");
 	var pop=document.getElementById("pop-up-box-search");
+	popc.style.display="none";
+	pop.style.display="none";
+}
+
+function popupHideVote(){
+	var popc=document.getElementById("pop-up-box-container-vote");
+	var pop=document.getElementById("pop-up-box-vote");
 	popc.style.display="none";
 	pop.style.display="none";
 }
