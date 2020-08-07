@@ -166,9 +166,7 @@ function showPopupVote(){
 
 
 function popupHideVote(){
-	var popc=document.getElementById("pop-up-box-container-vote");
 	var pop=document.getElementById("pop-up-box-vote");
-	popc.style.display="none";
 	pop.style.display="none";
 }
 

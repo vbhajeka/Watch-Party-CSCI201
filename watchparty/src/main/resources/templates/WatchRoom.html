@@ -2,9 +2,12 @@
 <head>
     <title>WatchParty</title>
 
-    <!-- Custom CSS	-->
+    <!-- Henry CSS	-->
     <link rel="stylesheet" type="text/css" media="screen"
           href="/css/Homepage.css">
+
+    <!--Tinder Swipe CSS-->
+    <link rel="stylesheet" href="/css/vote-popup.css">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -191,7 +194,7 @@
             </div>
         </div>
 
-        <!--  Voting Pop Up      -->
+        <!--Voting Pop Up-->
         <div id="pop-up-box-vote">
             <div id="pop-up-header-vote">Please Submit your Recommendation</div>
 
@@ -199,6 +202,92 @@
             <div id="pop-up-body-vote">
 
             </div>
+
+            <div class="demo">
+                <header class="demo__header"></header>
+                <div class="demo__content">
+                    <div class="demo__card-cont">
+                        <div class="demo__card">
+                            <div class="demo__card__top brown">
+                                <div class="demo__card__img"></div>
+                                <p class="demo__card__name">Hungry cat 6</p>
+                            </div>
+                            <div class="demo__card__btm">
+                                <p class="demo__card__we">Whatever</p>
+                            </div>
+                            <div class="demo__card__choice m--reject"></div>
+                            <div class="demo__card__choice m--like"></div>
+                            <div class="demo__card__drag"></div>
+                        </div>
+                        <div class="demo__card">
+                            <div class="demo__card__top lime">
+                                <div class="demo__card__img"></div>
+                                <p class="demo__card__name">Hungry cat 5</p>
+                            </div>
+                            <div class="demo__card__btm">
+                                <p class="demo__card__we">Whatever</p>
+                            </div>
+                            <div class="demo__card__choice m--reject"></div>
+                            <div class="demo__card__choice m--like"></div>
+                            <div class="demo__card__drag"></div>
+                        </div>
+                        <div class="demo__card">
+                            <div class="demo__card__top cyan">
+                                <div class="demo__card__img"></div>
+                                <p class="demo__card__name">Hungry cat 4</p>
+                            </div>
+                            <div class="demo__card__btm">
+                                <p class="demo__card__we">Whatever</p>
+                            </div>
+                            <div class="demo__card__choice m--reject"></div>
+                            <div class="demo__card__choice m--like"></div>
+                            <div class="demo__card__drag"></div>
+                        </div>
+                        <div class="demo__card">
+                            <div class="demo__card__top indigo">
+                                <div class="demo__card__img"></div>
+                                <p class="demo__card__name">Hungry cat 3</p>
+                            </div>
+                            <div class="demo__card__btm">
+                                <p class="demo__card__we">Whatever</p>
+                            </div>
+                            <div class="demo__card__choice m--reject"></div>
+                            <div class="demo__card__choice m--like"></div>
+                            <div class="demo__card__drag"></div>
+                        </div>
+                        <div class="demo__card">
+                            <div class="demo__card__top blue">
+                                <div class="demo__card__img"></div>
+                                <p class="demo__card__name">Hungry cat 2</p>
+                            </div>
+                            <div class="demo__card__btm">
+                                <p class="demo__card__we">Whatever</p>
+                            </div>
+                            <div class="demo__card__choice m--reject"></div>
+                            <div class="demo__card__choice m--like"></div>
+                            <div class="demo__card__drag"></div>
+                        </div>
+                        <div class="demo__card">
+                            <div class="demo__card__top purple">
+                                <div class="demo__card__img"></div>
+                                <p class="demo__card__name">Hungry cat</p>
+                            </div>
+                            <div class="demo__card__btm">
+                                <p class="demo__card__we">Whatever</p>
+                            </div>
+                            <div class="demo__card__choice m--reject"></div>
+                            <div class="demo__card__choice m--like"></div>
+                            <div class="demo__card__drag"></div>
+                        </div>
+                    </div>
+                    <p class="demo__tip">Swipe left or right</p>
+                </div>
+            </div>
+
+
+
+
+
 
 
             <div id="pop-up-footer-vote">
@@ -239,5 +328,8 @@
 
 <!--Script for Searching & Voting Functionality-->
 <script src="/js/watchroom/voting.js"></script>
+
+
+<script src="/js/watchroom/tinder-swipe.js"></script>
 
 </html>

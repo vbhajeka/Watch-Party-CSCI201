@@ -225,8 +225,37 @@ function onPlayerStateChange(event) {
 ///--------------------------
 
 //Triggers on video end to allow vote for up next
+//i.e. when event=0 fires
+//Shows popup of cards for each video
 function trigger_vote() {
+
+    //Add 5 cards
+    for(let i = 0; i < 5; i++) {
+        //Create container div
+        let cardDiv = document.createElement("div");
+        cardDiv.setAttribute("class", demo__card);
+
+        //Add defining html to card div
+        let cardHtml = ` <div class="demo__card__top brown">
+                                    <div class="demo__card__img"></div>
+                                    <p class="demo__card__name">Hungry cat 6</p>
+                                </div>
+                                <div class="demo__card__btm">
+                                    <p class="demo__card__we">Whatever</p>
+                                </div>
+                                <div class="demo__card__choice m--reject"></div>
+                                <div class="demo__card__choice m--like"></div>
+                                <div class="demo__card__drag"></div>`
+
+        cardDiv.innerHTML += cardHtml;
+
+        //Add the cardDiv to the cardsContainer
+        let cardsContainer = document.querySelector(".demo__card-cont");
+        cardsContainer.appendChild(cardDiv);
+    }
+
     showPopupVote();
+
 }
 
 
