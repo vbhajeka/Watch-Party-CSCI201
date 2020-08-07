@@ -229,11 +229,17 @@ function onPlayerStateChange(event) {
 //Shows popup of cards for each video
 function trigger_vote() {
 
+    //Remove all cards before vote is triggered
+    let cards = document.querySelectorAll(".demo__card");
+    for(let card of cards) {
+        card.parentNode.removeChild(card);
+    }
+
     //Add 5 cards
     for(let i = 0; i < 5; i++) {
         //Create container div
         let cardDiv = document.createElement("div");
-        cardDiv.setAttribute("class", demo__card);
+        cardDiv.setAttribute("class", "demo__card");
 
         //Add defining html to card div
         let cardHtml = ` <div class="demo__card__top brown">

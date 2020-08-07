@@ -2,7 +2,7 @@ $(document).ready(function() {
 
     var animating = false;
     var cardsCounter = 0;
-    var numOfCards = 6;
+    var numOfCards = 5;
     var decisionVal = 80;
     var pullDeltaX = 0;
     var deg = 0;
@@ -66,6 +66,9 @@ $(document).ready(function() {
         //If all cards have been removed show the winner
         if(alexRemovedCards === numOfCards) {
 
+            //Reset removed cards counter
+            alexRemovedCards = 0;
+
             show_winner();
 
             //Delay close for 3 seconds
@@ -75,7 +78,7 @@ $(document).ready(function() {
                 //Remove the winning message
                 let winningVidMessage = document.getElementById("winning-video-message");
                 winningVidMessage.parentElement.removeChild(winningVidMessage);
-            }, 10000);
+            }, 8000);
 
 
         }
@@ -106,6 +109,8 @@ $(document).ready(function() {
 
 });
 
+//Runs after all cards have been chosen
+//
 function show_winner() {
     let cardContainer = document.querySelector(".demo__content");
 
