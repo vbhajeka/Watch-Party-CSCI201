@@ -115,6 +115,15 @@ h1{
   	font-size: 12px;
 }
 
+.title-text{
+	font-size:15px;
+	font-weight:bold;
+	color:#FFC72C;
+	padding-left:5px;
+	white-space:nowrap;
+	overflow-x:hidden;
+	text-overflow:ellipsis;
+}
 
 ::-webkit-scrollbar{
 	display:none;
