@@ -3,13 +3,11 @@ package vip.watchparty.controllers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import vip.watchparty.controllers.websockets.RoomSocketController;
+import vip.watchparty.controllers.components.AllRooms;
+import vip.watchparty.controllers.components.SharedTest;
 import vip.watchparty.persistence.models.Room;
 import vip.watchparty.persistence.models.Video;
 
@@ -19,8 +17,9 @@ import java.util.*;
 public class RoomController {
 
     private static final Logger logger = LoggerFactory.getLogger(RoomController.class);
-    Map<UUID, Room> allRooms = new HashMap<>();
 
+    @Autowired
+    AllRooms allRooms;
 
     @GetMapping("/room")
     public ModelAndView redirect_to_room() {
@@ -30,14 +29,10 @@ public class RoomController {
         UUID uuid = UUID.randomUUID();
 
         //Add room to list of all rooms
-        if(!allRooms.containsKey(uuid)) {
-            Room room = new Room();
+        if(allRooms.room_exists(uuid.toString())) {
 
-            room.setId(uuid.toString());
+            allRooms.create_room(uuid.toString());
 
-
-
-            allRooms.put(uuid, room);
         }else {
             //Add the user to the list of users
 
@@ -50,8 +45,10 @@ public class RoomController {
     }
 
     @GetMapping("/room/{roomId}")
-    public ModelAndView get_room() {
+    public ModelAndView go_to_room() {
         ModelAndView mv = new ModelAndView("WatchRoom");
+
+
 
         return mv;
     }
@@ -69,7 +66,7 @@ public class RoomController {
         Room targetRoom = null;
         try {
             //Look up the corresponding room
-            targetRoom = allRooms.get(UUID.fromString(roomId));
+            targetRoom = allRooms.get_room(roomId);
         } catch (Exception e) {
             return "Failed to find room with id" + roomId;
         }
@@ -94,7 +91,7 @@ public class RoomController {
         //Look up the corresponding room
         Room targetRoom = null;
         try {
-            targetRoom = allRooms.get(UUID.fromString(roomId));
+            targetRoom = allRooms.get_room(roomId);
         } catch (Exception e) {
             return null;
         }

@@ -9,7 +9,9 @@ public class PlayerEvent {
     public enum EventType {
         PAUSE,
         PLAY,
-        SCRUB
+        SCRUB,
+        USERJOIN,
+        JOINSYNC
     }
 
     public EventType getEventType() {
