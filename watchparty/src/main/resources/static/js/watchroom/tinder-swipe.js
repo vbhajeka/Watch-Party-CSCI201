@@ -155,7 +155,10 @@ function clear_voting_message() {
 async function post_votes_to_server() {
 
     console.log("Posting votes server");
-    console.log(userVotes.toString());
+
+
+    let votesObject = {votes: userVotes}
+    console.log(votesObject);
 
     let endpoint = window.location.href + "/submit_vote";
     let response = await fetch(endpoint,{
@@ -163,9 +166,7 @@ async function post_votes_to_server() {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: {
-            "arrayParam": userVotes.toString()
-        }
+        body: JSON.stringify(votesObject)
     });
 
     let result = response.text();

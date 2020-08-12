@@ -280,12 +280,16 @@ async function trigger_vote() {
     showPopupVote();
 
     //No matter what, after 20 seconds update the video
-    setTimeout(() => {
+    setTimeout(async () => {
 
         //Close the popup
         popupCancelVote();
 
-        let newVideoId = "YQHsXMglC9A";
+        //Ask the server for winning vote
+        let endpoint = window.location.href + "/get_vote_result";
+        let request = await fetch(endpoint);
+
+        let newVideoId = await request.text();
 
         player.loadVideoById(newVideoId);
 
