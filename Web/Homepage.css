@@ -35,7 +35,7 @@ body{
 	border-radius:10px;
 }
 
-#top-lect-container,#top-right-container,#room-list,#bottom-left-container,#bottom-right-container{
+#top-left-container,#top-right-container,#room-list,#bottom-left-container,#bottom-right-container{
 	background:#9D2235;
 }
 
@@ -94,6 +94,10 @@ body{
 
 }
 
+#room-list-alternative{
+	grid-area:room-list;
+}
+
 
 .room,.bigbutton-container{
 	display:grid;
@@ -114,7 +118,6 @@ body{
 	grid-row:span 2;
 	height:40px;
 	width:40px;
-	border-radius:100%;
 }
 
 .enterbutton{

@@ -27,10 +27,12 @@
 			if(document.getElementById("room-list").style.visibility=="visible")
 			{
 				document.getElementById("room-list").style.visibility="hidden";
+				document.getElementById("room-list-alternative").style.visibility="visible";
 			}
 			else
 			{
 				document.getElementById("room-list").style.visibility="visible";
+				document.getElementById("room-list-alternative").style.visibility="hidden";
 			}
 		}
 	</script>
@@ -41,35 +43,36 @@
 		<div id="top-left-container" onclick="change();">
 			<p id="leftheader">Room</p>
 		</div>
+		<img id="room-list-alternative" src="zoom.jpg" alt="Icon">
 		<div id="room-list">
 			<div class="seperation">
 				<p> Public Rooms</p>
 			</div>
 			<div class="room">
-				<img src="" alt="Icon">
+				<img src="tom-and-jerry.jpg" alt="Icon">
 				<div class="title-text">
 					Tom and Jerry
 				</div>
 				<button class="enterbutton" type="button">Enter</button>
 			</div>
 			<div class="room">
-				<img src="" alt="Icon">
+				<img src="NFL.png" alt="Icon">
 				<div class="title-text">
 					NFL
 				</div>
 				<button class="enterbutton" type="button">Enter</button>
 			</div>
 			<div class="room">
-				<img src="" alt="Icon">
+				<img src="CSCI-201.png" alt="Icon">
 				<div class="title-text">
-					Room name
+					CSCI 201
 				</div>
 				<button class="enterbutton" type="button">Enter</button>
 			</div>
 			<div class="room">
-				<img src="" alt="Icon">
+				<img src="cnn.png" alt="Icon">
 				<div class="title-text">
-					Room name
+					CNN
 				</div>
 				<button class="enterbutton" type="button">Enter</button>
 			</div>
@@ -79,7 +82,7 @@
 			</div>
 
 			<div class="room">
-				<img src="" alt="Icon">
+				<img src="minion.png" alt="Icon">
 				<div class="title-text">
 					My Private Room
 				</div>
