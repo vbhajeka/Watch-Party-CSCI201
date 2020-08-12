@@ -50,23 +50,23 @@ public class RoomSocketController {
     //--------------------------------
 
     //Handles text chat sent messages in a room
-    @MessageMapping("/room/{roomId}/sendMessage")
+    @MessageMapping("/room/{roomId}/sendmessage")
     public void send_message(@DestinationVariable String roomId,
                                    @Payload ChatMessage chatMessage) {
 
-        messagingTemplate.convertAndSend(format("/chat-room/%s", roomId), chatMessage);
+        logger.info("A message was received");
+        messagingTemplate.convertAndSend(format("/chat/%s", roomId), chatMessage);
     }
 
 
     //Handles a user join event
     @MessageMapping("/room/{roomId}/addUser")
-    public ChatMessage add_user(@Payload ChatMessage chatMessage,
-                               SimpMessageHeaderAccessor headerAccessor) {
+    public void add_user(@DestinationVariable String roomId, @Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
 
         //Add username to the websocket session
         headerAccessor.getSessionAttributes().put("webSocketUsername", chatMessage.getSender());
 
-        return chatMessage;
+        messagingTemplate.convertAndSend(format("/chat/%s", roomId), chatMessage);
 
     }
 

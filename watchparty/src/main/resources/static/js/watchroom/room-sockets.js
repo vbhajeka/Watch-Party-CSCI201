@@ -59,6 +59,24 @@ function on_sync_event(payload) {
 
 function on_message(payload) {
 
+    let chatMessage = JSON.parse(payload.body);
+    console.log(chatMessage);
+
+    let chatHtml = `
+    <div class="message-person"></div>
+    <div class="message-text">${chatMessage.content}</div>
+    <div class="message-time"></div>
+    `;
+
+    let chatMessageContainer = document.createElement("div");
+    chatMessageContainer.setAttribute("class", "other-message");
+    chatMessageContainer.innerHTML += chatHtml;
+
+
+
+    document.querySelector("#chat-message-list").prepend(chatMessageContainer);
+
+    console.log("here");
 }
 
 function onMessageReceived(payload) {
