@@ -13,6 +13,6 @@ public class HomeController {
 
     @GetMapping("/")
     public ModelAndView redirect_from_index() {
-        return new ModelAndView("redirect:/room/");
+        return new ModelAndView("home");
     }
 }

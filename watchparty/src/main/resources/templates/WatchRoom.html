@@ -43,10 +43,10 @@
 	    	if (sessionStorage.getItem("username") === null) {
 	    		document.getElementById("my-priv-room-text").innerHTML = "Login to use private rooms";
 	    		document.getElementById("create-room-div").style.display = "none";
-	   		}	
+	   		}
 	    }
-    	
-    	
+
+
         function loadUrl(){
             var leaveRoom = document.querySelector("#leaveRoom");
             leaveRoom.href = "https://www.google.com";
@@ -89,42 +89,32 @@
             <div class="title-text">
                 Tom and Jerry
             </div>
-            <button class="enterbutton" type="button">Enter</button>
+            <a href="/room/tom-and-jerry" class="enterbutton" type="button">Enter</a>
         </div>
         <div class="room">
             <img src="" alt="Icon">
             <div class="title-text">
                 NFL
             </div>
-            <button class="enterbutton" type="button">Enter</button>
+            <a href="/room/nfl" class="enterbutton" type="button">Enter</a>
         </div>
         <div class="room">
             <img src="" alt="Icon">
             <div class="title-text">
-                Room name
+                CSCI
             </div>
-            <button class="enterbutton" type="button">Enter</button>
+            <a href="/room/csci" class="enterbutton" type="button">Enter</a>
         </div>
         <div class="room">
             <img src="" alt="Icon">
             <div class="title-text">
-                Room name
+                CNN
             </div>
-            <button class="enterbutton" type="button">Enter</button>
+            <a href="/room/cnn" class="enterbutton" type="button">Enter</a>
         </div>
 
-        <div class="seperation">
-            <p> Private Rooms</p>
-        </div>
-
-        <div class="room">
-            <img id="my-priv-room-img" src="" alt="Icon">
-            <div id="my-priv-room-text" class="title-text">
-                My Private Room
-            </div>
-        </div>
         <div id="create-room-div" class="bigbutton-container">
-            <button class="bigbutton" type="button" onclick="showPopupCreate()">Create Room</button>
+            <button id="create-room-btn"class="bigbutton" type="button">Create Room</button>
             <div id="pop-up-box-container-create"> </div>
             <div id="pop-up-box-create">
                 <div id="pop-up-header-create"> Create a Private Room?</div>
@@ -135,27 +125,10 @@
                 </div>
             </div>
         </div>
-        <div class="container-cust">
-            <input class = "width-50" type = "text" PLACEHOLDER="room url" name = "joinRoom">
-            <button class = " bigbutton width-30" type = "button" name="joinRoom"/> Join </button>
-        </div>
-        <div class="bigbutton-container">
-            <a id = "leaveRoom" href=""><button class="bigbutton" type="button" onclick="showPopupLeave()">Leave Room</button></a>
-            <div id="pop-up-box-container-leave"> </div>
-            <div id="pop-up-box-leave">
-                <div id="pop-up-header-leave"> Leave Room?</div>
-                <div id="pop-up-body-leave"> </div>
-                <div id="pop-up-footer-leave">
-                    <button onclick="popupOkLeave()">OK</button>
-                    <button onclick="popupCancelLeave()">Cancel</button>
-                </div>
-            </div>
-        </div>
+
     </div>
 
     <div id="bottom-left-container">
-        <a id = "logout" href="">
-            <button class="bigbutton" type="button" onclick="showPopupLogout()">Log out</button></a>
         <div id="pop-up-box-container-logout"> </div>
         <div id="pop-up-box-logout">
             <div id="pop-up-header-logout"> Log out?</div>
@@ -347,5 +320,7 @@
 
 <script src="/js/watchroom/tinder-swipe.js" defer></script>
 <script src="/js/watchroom/chat.js" defer></script>
+
+<script src="/js/create-room.js"></script>
 
 </html>

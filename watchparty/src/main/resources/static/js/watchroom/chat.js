@@ -12,7 +12,7 @@ chatSendBtn.addEventListener("click", () => {
     //Create the chatMessage object
     var chatMessage = {
         sender: "a person",
-        content: "fuck",
+        content: messageText,
         type: 'CHAT'
     };
 

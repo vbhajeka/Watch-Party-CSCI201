@@ -56,7 +56,7 @@ public class DBRepo {
 
     public void addUser(String username, String password) {
 
-        jdbcTemplate.update("INSERT INTO Users VALUES(username,password)",
+        jdbcTemplate.update("INSERT INTO Users (Username, Password) VALUES(?,?)",
         username, password);
     }
 
