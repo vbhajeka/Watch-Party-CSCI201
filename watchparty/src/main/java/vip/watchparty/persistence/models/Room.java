@@ -36,7 +36,7 @@ public class Room {
 
 
     public void setVideoId(String videoId) {
-        this.currentVideoId = id;
+        this.currentVideoId = videoId;
     }
 
     public String getVideoId() {

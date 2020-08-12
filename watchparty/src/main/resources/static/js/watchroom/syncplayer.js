@@ -148,6 +148,8 @@ function load_yt_api() {
 // 3. This function creates an <iframe> (and YouTube player)
 //    after the API code downloads. Execute as soon as load_yt_api completes
 function onYouTubeIframeAPIReady() {
+    console.log("Playing id = " + currentVideoId);
+
     player = new YT.Player('player', {
         height: '600',
         width: '900',
@@ -163,14 +165,8 @@ function onYouTubeIframeAPIReady() {
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady(event) {
 
-    get_syncTime()
-        .then((time) => {
-            console.log("Got the sync time", time);
-            event.target.playVideo();
-            event.target.seekTo(time);
-
-            run_progress_bar();
-        });
+    event.target.playVideo();
+    run_progress_bar();
 
 }
 
@@ -320,19 +316,19 @@ function setup_firebase() {
     console.log("Created firestore db", syncDb);
 }
 
-//Function to get the synchronized time of an open room
-//or return 0 if the room is brand new
-async function get_syncTime() {
-    let roomRef = syncDb.collection("rooms").doc(get_room_id());
-    let room = await roomRef.get();
+// //Function to get the synchronized time of an open room
+// //or return 0 if the room is brand new
+// async function get_syncTime() {
+//     let roomRef = syncDb.collection("rooms").doc(get_room_id());
+//     let room = await roomRef.get();
 
-    if(room.exists) {
-        console.log("Room exists");
-        let syncTime = room.data().syncedTime;
-        return syncTime.toFixed(0);
-    }
-    else {
-        console.log("Room does not exist");
-        return 0;
-    }
-}
+//     if(room.exists) {
+//         console.log("Room exists");
+//         let syncTime = room.data().syncedTime;
+//         return syncTime.toFixed(0);
+//     }
+//     else {
+//         console.log("Room does not exist");
+//         return 0;
+//     }
+// }

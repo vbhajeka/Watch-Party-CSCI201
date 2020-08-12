@@ -182,6 +182,7 @@ public class RoomController {
         }
 
         String videoId = targetRoom.get_winning_vote();
+        targetRoom.setVideoId(videoId);
 
         return videoId;
     }
