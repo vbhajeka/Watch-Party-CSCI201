@@ -7,7 +7,7 @@
 	<script>
 		function authenticateUser () {
 			var xhttp = new XMLHttpRequest();
-			xhttp.open("GET", "api/authenticateUser?username=" + document.loginForm.username.value + "&password=" + document.loginForm.pw.value, false);
+			xhttp.open("GET", "api/login?username=" + document.loginForm.username.value + "&password=" + document.loginForm.pw.value, false);
 			xhttp.send();
 			console.log(xhttp.responseText);
 			if (xhttp.responseText === "success") {
@@ -30,7 +30,7 @@
 					<input type="Password" name="pw" placeholder="Enter a Password">
 					<p id="errorP" style="font-size:small"></p>
 					<input type="submit" name="submit" value="Login" onClick="return authenticateUser()">
-					<a href="/register"> Create an Account Here!</a>
+					<a href="#"> Create an Account Here!</a>
 				</form>
 		</div>
 	<body>

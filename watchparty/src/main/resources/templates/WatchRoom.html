@@ -38,6 +38,15 @@
 
     <!--James Script addition-->
     <script>
+    	function onloadAction() {
+	    	console.log("in onload");
+	    	if (sessionStorage.getItem("username") === null) {
+	    		document.getElementById("my-priv-room-text").innerHTML = "Login to use private rooms";
+	    		document.getElementById("create-room-div").style.display = "none";
+	   		}	
+	    }
+    	
+    	
         function loadUrl(){
             var leaveRoom = document.querySelector("#leaveRoom");
             leaveRoom.href = "https://www.google.com";
@@ -66,7 +75,7 @@
 
 
 </head>
-<body>
+<body onLoad="onloadAction()">
 <div id="general-container">
     <div id="top-left-container" onclick="change();">
         <p id="leftheader">Room</p>
@@ -109,12 +118,12 @@
         </div>
 
         <div class="room">
-            <img src="" alt="Icon">
-            <div class="title-text">
+            <img id="my-priv-room-img" src="" alt="Icon">
+            <div id="my-priv-room-text" class="title-text">
                 My Private Room
             </div>
         </div>
-        <div class="bigbutton-container">
+        <div id="create-room-div" class="bigbutton-container">
             <button class="bigbutton" type="button" onclick="showPopupCreate()">Create Room</button>
             <div id="pop-up-box-container-create"> </div>
             <div id="pop-up-box-create">
