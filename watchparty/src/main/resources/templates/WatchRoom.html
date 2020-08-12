@@ -41,8 +41,11 @@
     	function onloadAction() {
 	    	console.log("in onload");
 	    	if (sessionStorage.getItem("username") === null) {
-	    		document.getElementById("my-priv-room-text").innerHTML = "Login to use private rooms";
 	    		document.getElementById("create-room-div").style.display = "none";
+	    		document.getElementById("join-room-div").style.display = "none";
+	    		document.getElementById("logout").style.display = "none";
+	   		} else {
+	   			document.getElementById("my-priv-room-text").style.display = "none";
 	   		}	
 	    }
     	
@@ -65,6 +68,11 @@
                 document.getElementById("room-list").style.visibility="visible";
             }
         }
+        
+        function logout() {
+        	sessionStorage.clear();
+        }
+        
     </script>
 
     <!-- Thymeleaf to Javascript -->
@@ -118,10 +126,13 @@
         </div>
 
         <div class="room">
-            <img id="my-priv-room-img" src="" alt="Icon">
-            <div id="my-priv-room-text" class="title-text">
+            <img src="" alt="Icon">
+            <div class="title-text">
                 My Private Room
             </div>
+        </div>
+        <div id="my-priv-room-text" class="bigbutton-container">
+        	<a href="/login"><button class="bigbutton">Login to use private rooms</button></a>
         </div>
         <div id="create-room-div" class="bigbutton-container">
             <button class="bigbutton" type="button" onclick="showPopupCreate()">Create Room</button>
@@ -135,12 +146,12 @@
                 </div>
             </div>
         </div>
-        <div class="container-cust">
+        <div class="container-cust" id="join-room-div">
             <input class = "width-50" type = "text" PLACEHOLDER="room url" name = "joinRoom">
             <button class = " bigbutton width-30" type = "button" name="joinRoom"/> Join </button>
         </div>
         <div class="bigbutton-container">
-            <a id = "leaveRoom" href=""><button class="bigbutton" type="button" onclick="showPopupLeave()">Leave Room</button></a>
+            <a id = "leaveRoom"><button class="bigbutton" type="button" onclick="showPopupLeave()">Leave Room</button></a>
             <div id="pop-up-box-container-leave"> </div>
             <div id="pop-up-box-leave">
                 <div id="pop-up-header-leave"> Leave Room?</div>
@@ -154,8 +165,9 @@
     </div>
 
     <div id="bottom-left-container">
-        <a id = "logout" href="">
-            <button class="bigbutton" type="button" onclick="showPopupLogout()">Log out</button></a>
+        <a id="logout">
+            <button class="bigbutton" type="button" onclick="logout()">Log out</button>
+        </a>
         <div id="pop-up-box-container-logout"> </div>
         <div id="pop-up-box-logout">
             <div id="pop-up-header-logout"> Log out?</div>

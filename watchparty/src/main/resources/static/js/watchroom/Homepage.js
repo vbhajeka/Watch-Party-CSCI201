@@ -97,6 +97,7 @@ function showPopupLogout(){
 
 function popupOkLogout(){
 	popupHideLogout();
+	sessionStorage.clear();
 }
 
 function popupCancelLogout(){
