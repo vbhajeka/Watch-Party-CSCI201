@@ -41,8 +41,12 @@
     	function onloadAction() {
 	    	console.log("in onload");
 	    	if (sessionStorage.getItem("username") === null) {
-	    		document.getElementById("my-priv-room-text").innerHTML = "Login to use private rooms";
 	    		document.getElementById("create-room-div").style.display = "none";
+
+	    		document.getElementById("join-room-div").style.display = "none";
+	    		document.getElementById("logout").style.display = "none";
+	   		} else {
+	   			document.getElementById("my-priv-room-text").style.display = "none";
 	   		}
 	    }
 
@@ -65,6 +69,11 @@
                 document.getElementById("room-list").style.visibility="visible";
             }
         }
+
+        function logout() {
+        	sessionStorage.clear();
+        }
+
     </script>
 
     <!-- Thymeleaf to Javascript -->
