@@ -8,3 +8,11 @@ function get_room_id() {
 }
 
 
+let userVotes = [];
+
+//Sleep function to wait before resolving next video
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+let numOfCards;

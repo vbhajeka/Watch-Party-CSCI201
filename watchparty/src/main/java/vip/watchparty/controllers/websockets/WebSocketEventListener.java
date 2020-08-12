@@ -38,6 +38,7 @@ public class WebSocketEventListener {
         logger.info("Received a new web socket connection from " + headers.getSessionId());
 
     }
+
     @EventListener
     public void handleSubscribe(SessionSubscribeEvent event) {
         SimpMessageHeaderAccessor headers =

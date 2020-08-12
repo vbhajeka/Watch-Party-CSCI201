@@ -22,9 +22,16 @@ function main() {
 function connect_callback() {
 
 
-    console.log(`/syncplayer/${get_room_id()}`)
+
     stompClient.subscribe(`/syncplayer/${get_room_id()}`, on_sync_event);
     stompClient.subscribe(`/chat/${get_room_id()}`, on_message);
+
+    // // Tell your username to the server
+    // stompClient.send("/app/chat.addUser",
+    //     {},
+    //     JSON.stringify({sender: username, type: 'JOIN'})
+    // )
+
 }
 
 

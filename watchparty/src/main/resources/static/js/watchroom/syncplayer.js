@@ -124,7 +124,7 @@ function run_progress_bar() {
 
     let scrubber = document.querySelector("#scrubber");
     setInterval(() => {
-        
+
         if (player!== null) {
             let percentPlayed = 100*player.getCurrentTime()/player.getDuration();
             scrubber.style.left = percentPlayed + "%";
@@ -151,8 +151,8 @@ function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
         height: '600',
         width: '900',
-        videoId: 'M7lc1UVf-VE',
-        playerVars: {'controls': 0},
+        videoId: currentVideoId,
+        playerVars: {'controls': 0, 'autoplay' : 0},
         events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -227,7 +227,16 @@ function onPlayerStateChange(event) {
 //Triggers on video end to allow vote for up next
 //i.e. when event=0 fires
 //Shows popup of cards for each video
-function trigger_vote() {
+//Main voting event loop
+async function trigger_vote() {
+
+    //Get the queue for the room
+    let endpoint = window.location.href + "/get_room_queue"
+    let response = await fetch(endpoint);
+
+    //Gets JSON of queued videos
+    let queuedVideos = await response.json();
+
 
     //Remove all cards before vote is triggered
     let cards = document.querySelectorAll(".demo__card");
@@ -235,19 +244,27 @@ function trigger_vote() {
         card.parentNode.removeChild(card);
     }
 
-    //Add 5 cards
-    for(let i = 0; i < 5; i++) {
+    //Add cards
+    numOfCards = queuedVideos.length;
+    for(let video of queuedVideos) {
         //Create container div
         let cardDiv = document.createElement("div");
         cardDiv.setAttribute("class", "demo__card");
 
+
+        let nothing = "";
+        let videoTitle =video.title.substring(0,24);
+        let videoId = video.id;
+
+        cardDiv.setAttribute("id", videoId);
+
         //Add defining html to card div
         let cardHtml = ` <div class="demo__card__top brown">
                                     <div class="demo__card__img"></div>
-                                    <p class="demo__card__name">Hungry cat 6</p>
+                                    <p class="demo__card__name">${nothing}</p>
                                 </div>
                                 <div class="demo__card__btm">
-                                    <p class="demo__card__we">Whatever</p>
+                                    <p class="demo__card__we">${videoTitle}</p>
                                 </div>
                                 <div class="demo__card__choice m--reject"></div>
                                 <div class="demo__card__choice m--like"></div>
@@ -261,6 +278,18 @@ function trigger_vote() {
     }
 
     showPopupVote();
+
+    //No matter what, after 20 seconds update the video
+    setTimeout(() => {
+
+        //Close the popup
+        popupCancelVote();
+
+        let newVideoId = "YQHsXMglC9A";
+
+        player.loadVideoById(newVideoId);
+
+    }, 20000);
 
 }
 

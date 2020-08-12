@@ -64,7 +64,7 @@ public class RoomSocketController {
                                SimpMessageHeaderAccessor headerAccessor) {
 
         //Add username to the websocket session
-        headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        headerAccessor.getSessionAttributes().put("webSocketUsername", chatMessage.getSender());
 
         return chatMessage;
 

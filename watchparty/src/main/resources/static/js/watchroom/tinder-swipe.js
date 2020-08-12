@@ -1,8 +1,8 @@
+
 $(document).ready(function() {
 
     var animating = false;
     var cardsCounter = 0;
-    var numOfCards = 5;
     var decisionVal = 80;
     var pullDeltaX = 0;
     var deg = 0;
@@ -26,14 +26,26 @@ $(document).ready(function() {
 
         if (pullDeltaX >= decisionVal) {
             $card.addClass("to-right");
+
+            //I THINK THIS IS VOTING FOR
+            console.log("Voted for");
+
+            //Add vote
+            userVotes.push($card.attr("id"))
+
+
         } else if (pullDeltaX <= -decisionVal) {
             $card.addClass("to-left");
+
+            //I THINK THIS IS VOTING AGAINST
+            console.log("Voted against");
+
+            //Do nothing
         }
 
         if (Math.abs(pullDeltaX) >= decisionVal) {
             $card.addClass("inactive");
 
-            console.log("Chosen");
 
 
             setTimeout(function() {
@@ -63,22 +75,15 @@ $(document).ready(function() {
         $card.remove();
         alexRemovedCards += 1;
 
-        //If all cards have been removed show the winner
+        //User has finished voting (all cards have been removed)
         if(alexRemovedCards === numOfCards) {
 
             //Reset removed cards counter
             alexRemovedCards = 0;
 
-            show_winner();
 
-            //Delay close for 3 seconds
-            setTimeout(() => {
-                //Close the popup
-                popupCancelVote()
-                //Remove the winning message
-                let winningVidMessage = document.getElementById("winning-video-message");
-                winningVidMessage.parentElement.removeChild(winningVidMessage);
-            }, 8000);
+            show_waiting_message();
+            post_votes_to_server();
 
 
         }
@@ -111,12 +116,59 @@ $(document).ready(function() {
 
 //Runs after all cards have been chosen
 //
-function show_winner() {
+async function show_waiting_message() {
+
+    add_voting_message("Waiting for end of voting period");
+
+
+    await sleep(20000);
+
+    clear_voting_message();
+
+    // let cardContainer = document.querySelector(".demo__content");
+
+    // let winningVideoMessage = document.createElement("div");
+    // winningVideoMessage.setAttribute("id", "winning-video-message");
+    // winningVideoMessage.innerHTML += "<h1>A video title </h1>";
+
+    // cardContainer.prepend(winningVideoMessage);
+}
+
+function add_voting_message(message) {
+
     let cardContainer = document.querySelector(".demo__content");
 
     let winningVideoMessage = document.createElement("div");
     winningVideoMessage.setAttribute("id", "winning-video-message");
-    winningVideoMessage.innerHTML += "<h1>A video title </h1>";
-
+    winningVideoMessage.innerHTML += `<h1>${message}</h1>`;
     cardContainer.prepend(winningVideoMessage);
+}
+
+function clear_voting_message() {
+    //Remove the winning message
+    let winningVidMessage = document.getElementById("winning-video-message");
+    winningVidMessage.parentElement.removeChild(winningVidMessage);
+}
+
+
+//Sends userVotes to server after they have finished their voting
+async function post_votes_to_server() {
+
+    console.log("Posting votes server");
+    console.log(userVotes.toString());
+
+    let endpoint = window.location.href + "/submit_vote";
+    let response = await fetch(endpoint,{
+        method:"POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: {
+            "arrayParam": userVotes.toString()
+        }
+    });
+
+    let result = response.text();
+
+    console.log(result);
 }

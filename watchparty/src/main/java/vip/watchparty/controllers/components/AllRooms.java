@@ -3,6 +3,7 @@ package vip.watchparty.controllers.components;
 import org.springframework.stereotype.Component;
 import vip.watchparty.persistence.models.Room;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,10 +14,12 @@ import java.util.UUID;
 public class AllRooms {
 
     //roomId to Room object mapping
-    private Map<String, Room> allRooms = new HashMap<>();
+    private Map<String, Room> allRooms = Collections.synchronizedMap(new HashMap<>());
 
 
     //Check whether the room is active
+    //synchronized since this is what is first called when a user
+    // joins
     public Boolean room_exists(String roomId) {
 
         return allRooms.containsKey(roomId);
@@ -27,6 +30,7 @@ public class AllRooms {
         Room newRoom = new Room();
         newRoom.setId(roomId);
 
+        allRooms.put(roomId, newRoom);
     }
 
     //Looks up room by id

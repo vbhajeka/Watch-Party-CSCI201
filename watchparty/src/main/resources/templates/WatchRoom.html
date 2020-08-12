@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Fuck</title>
+    <title>WatchRoom</title>
 
     <!-- Henry CSS	-->
     <link rel="stylesheet" type="text/css" media="screen"
@@ -58,6 +58,10 @@
         }
     </script>
 
+    <!-- Thymeleaf to Javascript -->
+    <script>
+        let currentVideoId = "[[${currentVideoId}]]";
+    </script>
 
 
 
@@ -181,8 +185,11 @@
         <button class="searchbutton" type="button" id="yt-search-btn">Search</button>
         <div id="pop-up-box-container-search"> </div>
         <div id="pop-up-box-search">
-            <div id="pop-up-header-search">Please Submit your Recommendation</div>
+            <div id="pop-up-header-search">Add to Queue</div>
 
+            <h3 id="add-to-queue-notification" style="color:red">
+                <!-- Success/Error Message Goes here -->
+            </h4>
 
             <div id="pop-up-body-search">
 
@@ -196,7 +203,7 @@
 
         <!--Voting Pop Up-->
         <div id="pop-up-box-vote">
-            <div id="pop-up-header-vote">Please Submit your Recommendation</div>
+            <div id="pop-up-header-vote">Vote For Up Next</div>
 
 
             <div id="pop-up-body-vote">
@@ -327,9 +334,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
 <!--Script for Searching & Voting Functionality-->
-<script src="/js/watchroom/voting.js"></script>
+<script src="/js/watchroom/add-to-queue.js" defer></script>
 
 
-<script src="/js/watchroom/tinder-swipe.js"></script>
+<script src="/js/watchroom/tinder-swipe.js" defer></script>
 
 </html>
