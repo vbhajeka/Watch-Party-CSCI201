@@ -10,6 +10,7 @@ import vip.watchparty.controllers.components.AllRooms;
 import vip.watchparty.controllers.components.SharedTest;
 import vip.watchparty.persistence.models.Room;
 import vip.watchparty.persistence.models.Video;
+import vip.watchparty.persistence.models.Votes;
 
 import java.util.*;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -169,8 +170,21 @@ public class RoomController {
     @GetMapping("/room/{roomId}/get_vote_result")
     @ResponseBody
     public String get_vote_result(@PathVariable String roomId) {
+        //Look up the room
+        Room targetRoom = null;
+        synchronized(allRooms) {
+            try {
+                targetRoom = allRooms.get_room(roomId);
+            } catch(Exception e) {
+                //will not throw
+            }
 
-        return "1234";
+        }
+
+        String videoId = targetRoom.get_winning_vote();
+        targetRoom.setVideoId(videoId);
+
+        return videoId;
     }
 
 
@@ -182,7 +196,7 @@ public class RoomController {
     */
     @PostMapping("/room/{roomId}/submit_vote")
     @ResponseBody
-    public String submit_vote(@PathVariable String roomId, @RequestParam(value="arrayParam") List<String> userVotes) {
+    public String submit_vote(@PathVariable String roomId, @RequestBody Votes userVotes) {
 
         //Look up the room
         Room targetRoom = null;
@@ -196,7 +210,7 @@ public class RoomController {
         }
 
         //Add votes
-        for(String video: userVotes) {
+        for(String video: userVotes.getVotes()) {
             targetRoom.addVote(video);
         }
 
